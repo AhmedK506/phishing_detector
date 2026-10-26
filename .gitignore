@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
+.env
+
+# Editor / tool leftovers
+.claude/
+.vscode/
+model/tempCodeRunnerFile.py
+
+# Trained models (200-500 MB each, over GitHub's 100 MB limit)
+model/*.pkl
+# ...but keep the small ones the app needs
+!model/feature_names.pkl
+!model/brand_hashes.pkl
+
+# Raw / processed datasets (large, third-party)
+data/*.csv
+!data/threshold_analysis.csv

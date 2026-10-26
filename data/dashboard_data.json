@@ -1,0 +1,44 @@
+{
+  "preprocessing": {
+    "raw_rows": 651191,
+    "malformed_removed": 61,
+    "duplicates_removed": 10071,
+    "cleaned_rows": 641059,
+    "missing_values": 0
+  },
+  "dataset": {
+    "kaggle_rows": 641059,
+    "tranco_added": 30000,
+    "total_training": 671059,
+    "safe_pct": 66.78,
+    "malicious_pct": 33.22,
+    "imbalance": "2.01 : 1",
+    "num_features": 35
+  },
+  "metrics": {
+    "accuracy": 97.01,
+    "precision": 90.75,
+    "recall": 92.36,
+    "f1": 91.55
+  },
+  "confusion": {
+    "tn": 108462,
+    "fp": 2215,
+    "fn": 1797,
+    "tp": 21738
+  },
+  "evaluation": {
+    "old_accuracy": 47.0,
+    "new_accuracy": 99.0,
+    "old_fp": 50,
+    "new_fp": 0,
+    "old_recall": 94.0,
+    "new_recall": 98.0
+  },
+  "model": {
+    "algorithm": "Random Forest",
+    "type": "Supervised \u00b7 Binary Classification",
+    "tuning": "RandomizedSearchCV",
+    "balancing": "class_weight='balanced'"
+  }
+}

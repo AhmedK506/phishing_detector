@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-box">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+             stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <path d="M9 12l2 2 4-4"></path>
+        </svg>
+      </div>
+      <div class="brand">
+        <div class="brand-name">Phishing Detector</div>
+        <div class="brand-sub">AI phishing detection</div>
+      </div>
+    </div>
+
+    <div class="autoscan-row">
+      <span class="autoscan-label">Auto-scan pages</span>
+      <label class="switch">
+        <input type="checkbox" id="autoscan-toggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Mode toggle -->
+    <div class="mode-toggle">
+      <button id="mode-current" class="mode-btn active">Current Site</button>
+      <button id="mode-paste" class="mode-btn">Paste URL</button>
+    </div>
+
+    <div id="url-box" class="url-box">
+      <span id="current-url">Loading...</span>
+    </div>
+    <input id="url-input" class="url-input hidden" type="text"
+           placeholder="Paste a URL, e.g. http://example.com" />
+
+    <button id="scan-btn">Scan This Site</button>
+
+    <!-- Loading -->
+    <div id="loading" class="loading hidden">
+      <div class="loader-circle">
+        <svg width="64" height="64" viewBox="0 0 64 64">
+          <circle cx="32" cy="32" r="28" fill="none" stroke="#e5e7eb" stroke-width="6"/>
+          <circle id="prog-ring" cx="32" cy="32" r="28" fill="none" stroke="#2563eb"
+                  stroke-width="6" stroke-linecap="round"
+                  stroke-dasharray="176" stroke-dashoffset="176"
+                  transform="rotate(-90 32 32)"/>
+        </svg>
+        <span id="prog-pct" class="prog-pct">0%</span>
+      </div>
+      <p id="loading-msg" class="loading-msg">Initializing scan...</p>
+      <div class="loading-steps">
+        <div class="step" id="step-1"><span class="dot"></span>URL analysis</div>
+        <div class="step" id="step-2"><span class="dot"></span>HTML inspection</div>
+        <div class="step" id="step-3"><span class="dot"></span>Visual comparison</div>
+        <div class="step" id="step-4"><span class="dot"></span>Ensemble scoring</div>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div id="result" class="result hidden">
+      <div class="gauge-wrap">
+        <svg width="180" height="104" viewBox="0 0 180 104">
+          <path d="M 22 92 A 68 68 0 0 1 158 92" fill="none"
+                stroke="#eceff3" stroke-width="14" stroke-linecap="round"/>
+          <path id="gauge-fill" d="M 22 92 A 68 68 0 0 1 158 92" fill="none"
+                stroke="#22c55e" stroke-width="14" stroke-linecap="round"
+                stroke-dasharray="214" stroke-dashoffset="214"/>
+          <text id="gauge-score" x="90" y="78" text-anchor="middle" class="gauge-score">0</text>
+          <text id="gauge-label" x="90" y="94" text-anchor="middle" class="gauge-label">—</text>
+        </svg>
+      </div>
+
+      <div id="verdict-card" class="verdict-card">
+        <span id="verdict-icon" class="verdict-icon"></span>
+        <div>
+          <div id="verdict-text" class="verdict-text"></div>
+          <div id="verdict-sub" class="verdict-sub"></div>
+        </div>
+      </div>
+
+      <div class="components">
+        <div class="comp-row">
+          <div class="comp-head"><span>URL Analysis</span><span id="url-score">—</span></div>
+          <div class="bar"><div id="url-bar" class="bar-fill"></div></div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-head"><span>HTML Analysis</span><span id="html-score">—</span></div>
+          <div class="bar"><div id="html-bar" class="bar-fill"></div></div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-head"><span>Visual Analysis</span><span id="visual-score">—</span></div>
+          <div class="bar"><div id="visual-bar" class="bar-fill"></div></div>
+        </div>
+      </div>
+
+      <div id="indicators" class="indicators"></div>
+
+      <div class="disclaimer">
+        This is an automated risk estimate, not a guarantee.
+        Use your own judgment before entering personal information or credentials.
+      </div>
+    </div>
+
+    <div id="error" class="error hidden"></div>
+
+    <!-- History -->
+    <div class="history-section">
+      <div class="history-head">
+        <span>Recent Scans</span>
+        <div class="history-actions">
+          <button id="export-history" class="clear-btn">Export</button>
+          <button id="clear-history" class="clear-btn">Clear</button>
+        </div>
+      </div>
+      <div id="history-list" class="history-list">
+        <p class="history-empty">No scans yet.</p>
+      </div>
+    </div>
+
+    <button id="dashboard-btn" class="dashboard-btn" style="display:none;">
+      📊 View Model Dashboard
+    </button>
+
+    <button id="reports-btn" class="dashboard-btn">
+      📋 View Reports & History
+    </button>
+
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
